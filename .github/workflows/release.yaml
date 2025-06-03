@@ -30,7 +30,17 @@ jobs:
       
       - name: Build project
         run: npm run build
-      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4.4.0
+        with:
+          name: build-artifact
+          path: docs
+          overwrite: true
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+          path: docs
       - name: Deploy to GitHub Page branch
         run: |
           git config --global user.name "GitHub Actions"
