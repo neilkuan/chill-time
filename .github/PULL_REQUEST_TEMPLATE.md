@@ -7,9 +7,9 @@
 <!-- Please describe what changes this PR makes -->
 
 ## PR Preview Link
-<!-- Please add a stackblitz link in this format -->
+<!-- This will be automatically updated by GitHub Actions -->
 
-`stackblitz.com/github/{username}/{project}/tree/{branch-name}`
+[Preview this PR](https://pr.new/github.com/neilkuan/chill-time/pull/{PR_NUMBER})
 
 ## Screenshots (if applicable)
 <!-- If there are UI changes, please provide screenshots -->
