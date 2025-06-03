@@ -12,6 +12,7 @@
 - 📱 **響應式設計**: 支援桌面和手機裝置
 - 🔊 **音效提醒**: 計時結束時播放提示音
 - 🎛️ **完整控制**: 開始/暫停/重置/跳過功能
+- 🌐 **多語言支援**: 支援英文、日文和繁體中文
 
 ## 🚀 快速開始
 
@@ -41,6 +42,9 @@ npm run build
    - 🟢 **開始/暫停**: 開始或暫停計時器
    - 🔄 **重置**: 重置計時器到初始狀態
    - ⏭️ **跳過**: 跳到下一個階段
+5. **語言選擇**:
+   - 使用語言選擇器切換顯示語言（英文、日文、繁體中文）
+   - 系統會記住您的語言偏好設定
 
 ## 🛠️ 技術架構
 
@@ -49,20 +53,28 @@ npm run build
 - **樣式**: CSS3 (毛玻璃效果、漸變背景)
 - **狀態管理**: React Hooks (useState, useEffect, useRef)
 - **響應式設計**: CSS Media Queries
+- **國際化**: i18next, react-i18next, i18next-browser-languagedetector
 
 ## 📂 專案結構
 
 ```
 pomodoro-timer/
 ├── src/
-│   ├── App.jsx          # 主要應用組件
-│   ├── App.css          # 應用樣式
-│   ├── main.jsx         # 應用入口點
-│   └── index.css        # 全域樣式
-├── index.html           # HTML 模板
-├── package.json         # 專案配置
-├── vite.config.js       # Vite 配置
-└── README.md           # 專案說明
+│   ├── App.jsx                # 主要應用組件
+│   ├── App.css                # 應用樣式
+│   ├── main.jsx               # 應用入口點
+│   ├── index.css              # 全域樣式
+│   ├── i18n.js                # i18n 配置
+│   ├── components/
+│   │   └── LanguageSelector.jsx # 語言選擇器組件
+│   └── translations/
+│       ├── en.json            # 英文翻譯
+│       ├── ja.json            # 日文翻譯
+│       └── zh-TW.json         # 繁體中文翻譯
+├── index.html                 # HTML 模板
+├── package.json               # 專案配置
+├── vite.config.js             # Vite 配置
+└── README.md                  # 專案說明
 ```
 
 ## 🎨 設計特色
@@ -72,6 +84,19 @@ pomodoro-timer/
 - **動態配色**: 根據不同模式（工作/休息）調整主題色彩
 - **進度條**: 視覺化顯示當前階段的進度
 - **平滑動畫**: 所有互動都有流暢的過渡效果
+
+## 🌐 多語言支援
+
+應用程式支援以下語言：
+- 🇺🇸 英文 (English)
+- 🇯🇵 日文 (日本語)
+- 🇹🇼 繁體中文
+
+多語言功能特點：
+- 自動檢測瀏覽器語言設定
+- 可手動切換語言
+- 語言偏好會保存在 localStorage 中
+- 預設語言為英文（如果無法檢測到瀏覽器語言）
 
 ## 📈 番茄工作法原理
 

@@ -1,0 +1,60 @@
+{
+  "appTitle": "🍅 ポモドーロタイマー",
+  "notification": {
+    "enable": "🔔 他のアプリケーションを使用している場合でも通知を受け取るには、通知を有効にしてください",
+    "enableButton": "通知を有効にする",
+    "enabled": "🔔 通知が有効になりました！",
+    "enabledMessage": "ポモドーロタイマーが終了すると通知が届きます"
+  },
+  "modes": {
+    "work": "集中作業",
+    "break": "短い休憩",
+    "longBreak": "長い休憩"
+  },
+  "controls": {
+    "start": "開始",
+    "pause": "一時停止",
+    "reset": "リセット",
+    "skip": "スキップ"
+  },
+  "stats": {
+    "completed": "完了したポモドーロ"
+  },
+  "instructions": {
+    "title": "使用方法：",
+    "items": [
+      "🍅 25分間集中する",
+      "☕ 5分間休憩する",
+      "🔄 4サイクル後、15分間の長い休憩を取る",
+      "🔔 最高の体験のために通知を有効にする"
+    ]
+  },
+  "footer": {
+    "madeWith": "❤️ 製作者：",
+    "repository": "🔗 GitHubリポジトリ"
+  },
+  "notifications": {
+    "workComplete": {
+      "title": "✅ 作業時間が終了しました！",
+      "message": "ポモドーロ#{count}を完了しました。{minutes}分間の休憩を取りましょう"
+    },
+    "longBreakStart": {
+      "title": "🎉 4つのポモドーロを完了しました！",
+      "message": "リラックスするために{minutes}分間の長い休憩を取りましょう！"
+    },
+    "breakComplete": {
+      "title": "🍅 休憩が終了しました。作業を始めましょう！",
+      "message": "{type}が終了しました。新しい{minutes}分間の集中作業セッションの準備をしましょう"
+    }
+  },
+  "breakTypes": {
+    "short": "短い休憩",
+    "long": "長い休憩"
+  },
+  "language": {
+    "selector": "言語",
+    "en": "English",
+    "ja": "日本語",
+    "zh-TW": "繁體中文"
+  }
+}

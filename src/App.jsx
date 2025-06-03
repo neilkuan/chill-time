@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
+import LanguageSelector from './components/LanguageSelector'
 import './App.css'
 
 const WORK_TIME = 25; // 工作時間 25 分鐘
@@ -6,6 +8,7 @@ const BREAK_TIME = 5;  // 休息時間 5 分鐘
 const LONG_BREAK_TIME = 15; // 長休息時間 15 分鐘
 
 function App() {
+  const { t } = useTranslation();
   const [minutes, setMinutes] = useState(WORK_TIME);
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
@@ -88,26 +91,26 @@ function App() {
         setMode('longBreak');
         setMinutes(LONG_BREAK_TIME);
         showNotification(
-          '🎉 恭喜完成 4 個番茄鐘！',
-          `現在開始 ${LONG_BREAK_TIME} 分鐘長休息時間，好好放鬆一下吧！`
+          t('notifications.longBreakStart.title'),
+          t('notifications.longBreakStart.message', { minutes: LONG_BREAK_TIME })
         );
       } else {
         // 短休息
         setMode('break');
         setMinutes(BREAK_TIME);
         showNotification(
-          '✅ 工作時間結束！',
-          `完成第 ${newCount} 個番茄鐘，現在休息 ${BREAK_TIME} 分鐘`
+          t('notifications.workComplete.title'),
+          t('notifications.workComplete.message', { count: newCount, minutes: BREAK_TIME })
         );
       }
     } else {
       // 休息結束，開始工作
       setMode('work');
       setMinutes(WORK_TIME);
-      const restType = mode === 'longBreak' ? '長休息' : '短休息';
+      const restType = mode === 'longBreak' ? t('breakTypes.long') : t('breakTypes.short');
       showNotification(
-        '🍅 休息結束，開始工作！',
-        `${restType}時間結束，準備開始新的 ${WORK_TIME} 分鐘專注工作`
+        t('notifications.breakComplete.title'),
+        t('notifications.breakComplete.message', { type: restType, minutes: WORK_TIME })
       );
     }
     setSeconds(0);
@@ -137,8 +140,8 @@ function App() {
       
       if (permission === 'granted') {
         showNotification(
-          '🔔 通知已啟用！',
-          '您將在番茄鐘結束時收到通知提醒'
+          t('notification.enabled'),
+          t('notification.enabledMessage')
         );
       }
     }
@@ -151,13 +154,13 @@ function App() {
   const getModeText = () => {
     switch (mode) {
       case 'work':
-        return '專注工作';
+        return t('modes.work');
       case 'break':
-        return '短暫休息';
+        return t('modes.break');
       case 'longBreak':
-        return '長時間休息';
+        return t('modes.longBreak');
       default:
-        return '專注工作';
+        return t('modes.work');
     }
   };
 
@@ -177,17 +180,20 @@ function App() {
   return (
     <div className="app">
       <div className="container">
-        <h1 className="title">🍅 番茄鐘</h1>
+        <h1 className="title">{t('appTitle')}</h1>
+        
+        {/* Language Selector */}
+        <LanguageSelector />
         
         {/* 通知權限狀態 */}
         {notificationPermission !== 'granted' && (
           <div className="notification-banner">
-            <p>🔔 啟用通知功能，即使在其他應用程式也能收到提醒</p>
+            <p>{t('notification.enable')}</p>
             <button 
               className="notification-btn"
               onClick={requestNotificationPermission}
             >
-              啟用通知
+              {t('notification.enableButton')}
             </button>
           </div>
         )}
@@ -217,21 +223,21 @@ function App() {
               onClick={toggleTimer}
               style={{ backgroundColor: getModeColor() }}
             >
-              {isActive ? '暫停' : '開始'}
+              {isActive ? t('controls.pause') : t('controls.start')}
             </button>
             
             <button 
               className="control-btn reset"
               onClick={resetTimer}
             >
-              重置
+              {t('controls.reset')}
             </button>
             
             <button 
               className="control-btn skip"
               onClick={skipTimer}
             >
-              跳過
+              {t('controls.skip')}
             </button>
           </div>
         </div>
@@ -239,31 +245,30 @@ function App() {
         <div className="stats">
           <div className="stat-item">
             <span className="stat-number">{pomodoroCount}</span>
-            <span className="stat-label">完成的番茄鐘</span>
+            <span className="stat-label">{t('stats.completed')}</span>
           </div>
         </div>
         
         <div className="instructions">
-          <h3>使用方法：</h3>
+          <h3>{t('instructions.title')}</h3>
           <ul>
-            <li>🍅 專注工作 25 分鐘</li>
-            <li>☕ 休息 5 分鐘</li>
-            <li>🔄 重複 4 次後長休息 15 分鐘</li>
-            <li>🔔 啟用通知功能獲得最佳體驗</li>
+            {t('instructions.items', { returnObjects: true }).map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
         </div>
       </div>
       
       <footer className="footer">
         <div className="footer-content">
-          <p>Made with ❤️ by <strong>Neil Kuan</strong></p>
+          <p>{t('footer.madeWith')} <strong>Neil Kuan</strong></p>
           <a 
             href="https://github.com/neilkuan/chill-time" 
             target="_blank" 
             rel="noopener noreferrer"
             className="github-link"
           >
-            <span>🔗 GitHub Repository</span>
+            <span>{t('footer.repository')}</span>
           </a>
         </div>
       </footer>
