@@ -1,34 +1,43 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import '../styles/LanguageSelector.css';
 
 const LanguageSelector = () => {
   const { t, i18n } = useTranslation();
   
-  // Change language handler
-  const changeLanguage = (event) => {
-    const newLanguage = event.target.value;
-    i18n.changeLanguage(newLanguage);
-    // Store the selected language in localStorage
-    localStorage.setItem('i18nextLng', newLanguage);
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    // Store the language preference in localStorage
+    localStorage.setItem('i18nextLng', lng);
+    // Update the HTML lang attribute
+    document.documentElement.setAttribute('lang', lng);
   };
-
-  // Apply the selected language to HTML lang attribute
-  useEffect(() => {
-    document.documentElement.setAttribute('lang', i18n.language);
-  }, [i18n.language]);
 
   return (
     <div className="language-selector">
-      <label htmlFor="language-select">{t('language.selector')}: </label>
-      <select 
-        id="language-select" 
-        onChange={changeLanguage} 
-        value={i18n.language}
-      >
-        <option value="en">{t('language.en')}</option>
-        <option value="ja">{t('language.ja')}</option>
-        <option value="zh-TW">{t('language.zh-TW')}</option>
-      </select>
+      <div className="language-selector-container">
+        <span className="language-label">{t('language.selector')}:</span>
+        <div className="language-buttons">
+          <button
+            className={`language-btn ${i18n.language === 'en' ? 'active' : ''}`}
+            onClick={() => changeLanguage('en')}
+          >
+            {t('language.en')}
+          </button>
+          <button
+            className={`language-btn ${i18n.language === 'ja' ? 'active' : ''}`}
+            onClick={() => changeLanguage('ja')}
+          >
+            {t('language.ja')}
+          </button>
+          <button
+            className={`language-btn ${i18n.language === 'zh-TW' ? 'active' : ''}`}
+            onClick={() => changeLanguage('zh-TW')}
+          >
+            {t('language.zh-TW')}
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

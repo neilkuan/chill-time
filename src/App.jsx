@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import LanguageSelector from './components/LanguageSelector'
 import './App.css'
+import LanguageSelector from './components/LanguageSelector'
 
-const WORK_TIME = 25; // 工作時間 25 分鐘
-const BREAK_TIME = 5;  // 休息時間 5 分鐘
-const LONG_BREAK_TIME = 15; // 長休息時間 15 分鐘
+const WORK_TIME = 25; // Work time 25 minutes
+const BREAK_TIME = 5;  // Break time 5 minutes
+const LONG_BREAK_TIME = 15; // Long break time 15 minutes
 
 function App() {
   const { t } = useTranslation();
@@ -17,13 +17,13 @@ function App() {
   const [notificationPermission, setNotificationPermission] = useState('default');
   const intervalRef = useRef(null);
 
-  // 檢查並請求通知權限
+  // Check and request notification permission
   useEffect(() => {
     if ('Notification' in window) {
       setNotificationPermission(Notification.permission);
       
       if (Notification.permission === 'default') {
-        // 自動請求通知權限
+        // Automatically request notification permission
         Notification.requestPermission().then(permission => {
           setNotificationPermission(permission);
         });
@@ -40,7 +40,7 @@ function App() {
           setMinutes(minutes - 1);
           setSeconds(59);
         } else {
-          // 時間到了
+          // Time's up
           setIsActive(false);
           handleTimerComplete();
         }
@@ -52,7 +52,7 @@ function App() {
     return () => clearInterval(intervalRef.current);
   }, [isActive, minutes, seconds]);
 
-  // 顯示瀏覽器通知
+  // Show browser notification
   const showNotification = (title, body, icon = '🍅') => {
     if ('Notification' in window && Notification.permission === 'granted') {
       const notification = new Notification(title, {
@@ -60,17 +60,17 @@ function App() {
         icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIj7wn42F8J+NhTwvdGV4dD4KPHN2Zz4K',
         badge: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIj7wn42F8J+NhTwvdGV4dD4KPHN2Zz4K',
         tag: 'pomodoro-timer',
-        requireInteraction: true, // 需要用戶互動才會消失
+        requireInteraction: true, // Requires user interaction to dismiss
         silent: false
       });
 
-      // 點擊通知時聚焦到應用程式
+      // Focus on the application when notification is clicked
       notification.onclick = () => {
         window.focus();
         notification.close();
       };
 
-      // 5秒後自動關閉通知
+      // Automatically close notification after 5 seconds
       setTimeout(() => {
         notification.close();
       }, 5000);
@@ -78,39 +78,39 @@ function App() {
   };
 
   const handleTimerComplete = () => {
-    // 播放提示音
+    // Play sound
     const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmEbBTGH0fPTgjMGHm7A7+OZURE');
-    audio.play().catch(() => {}); // 忽略錯誤，有些瀏覽器需要用戶互動才能播放音頻
+    audio.play().catch(() => {}); // Ignore errors, some browsers require user interaction to play audio
 
     if (mode === 'work') {
       const newCount = pomodoroCount + 1;
       setPomodoroCount(newCount);
       
       if (newCount % 4 === 0) {
-        // 每完成 4 個番茄鐘後長休息
+        // Long break after 4 pomodoros
         setMode('longBreak');
         setMinutes(LONG_BREAK_TIME);
         showNotification(
-          t('notifications.longBreakStart.title'),
-          t('notifications.longBreakStart.message', { minutes: LONG_BREAK_TIME })
+          t('notifications.longBreakComplete'),
+          t('notifications.longBreakMessage', { longBreakTime: LONG_BREAK_TIME })
         );
       } else {
-        // 短休息
+        // Short break
         setMode('break');
         setMinutes(BREAK_TIME);
         showNotification(
-          t('notifications.workComplete.title'),
-          t('notifications.workComplete.message', { count: newCount, minutes: BREAK_TIME })
+          t('notifications.workComplete'),
+          t('notifications.workCompleteMessage', { count: newCount, breakTime: BREAK_TIME })
         );
       }
     } else {
-      // 休息結束，開始工作
+      // Break is over, start working
       setMode('work');
       setMinutes(WORK_TIME);
-      const restType = mode === 'longBreak' ? t('breakTypes.long') : t('breakTypes.short');
+      const breakType = mode === 'longBreak' ? t('notifications.longBreak') : t('notifications.shortBreak');
       showNotification(
-        t('notifications.breakComplete.title'),
-        t('notifications.breakComplete.message', { type: restType, minutes: WORK_TIME })
+        t('notifications.breakComplete'),
+        t('notifications.breakCompleteMessage', { breakType: breakType, workTime: WORK_TIME })
       );
     }
     setSeconds(0);
@@ -132,7 +132,7 @@ function App() {
     handleTimerComplete();
   };
 
-  // 手動請求通知權限
+  // Manually request notification permission
   const requestNotificationPermission = async () => {
     if ('Notification' in window) {
       const permission = await Notification.requestPermission();
@@ -140,8 +140,8 @@ function App() {
       
       if (permission === 'granted') {
         showNotification(
-          t('notification.enabled'),
-          t('notification.enabledMessage')
+          t('notifications.notificationsEnabled'),
+          t('notifications.notificationsEnabledMessage')
         );
       }
     }
@@ -152,16 +152,7 @@ function App() {
   };
 
   const getModeText = () => {
-    switch (mode) {
-      case 'work':
-        return t('modes.work');
-      case 'break':
-        return t('modes.break');
-      case 'longBreak':
-        return t('modes.longBreak');
-      default:
-        return t('modes.work');
-    }
+    return t(`modes.${mode}`);
   };
 
   const getModeColor = () => {
@@ -185,15 +176,15 @@ function App() {
         {/* Language Selector */}
         <LanguageSelector />
         
-        {/* 通知權限狀態 */}
+        {/* Notification permission status */}
         {notificationPermission !== 'granted' && (
           <div className="notification-banner">
-            <p>{t('notification.enable')}</p>
+            <p>{t('notifications.enable')}</p>
             <button 
               className="notification-btn"
               onClick={requestNotificationPermission}
             >
-              {t('notification.enableButton')}
+              {t('notifications.enableButton')}
             </button>
           </div>
         )}
@@ -245,16 +236,17 @@ function App() {
         <div className="stats">
           <div className="stat-item">
             <span className="stat-number">{pomodoroCount}</span>
-            <span className="stat-label">{t('stats.completed')}</span>
+            <span className="stat-label">{t('stats.completedPomodoros')}</span>
           </div>
         </div>
         
         <div className="instructions">
           <h3>{t('instructions.title')}</h3>
           <ul>
-            {t('instructions.items', { returnObjects: true }).map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
+            <li>{t('instructions.work')}</li>
+            <li>{t('instructions.shortBreak')}</li>
+            <li>{t('instructions.cycle')}</li>
+            <li>{t('instructions.notifications')}</li>
           </ul>
         </div>
       </div>

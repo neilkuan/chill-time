@@ -1,0 +1,48 @@
+{
+  "appTitle": "🍅 ポモドーロタイマー",
+  "modes": {
+    "work": "集中作業",
+    "break": "小休憩",
+    "longBreak": "長休憩"
+  },
+  "controls": {
+    "start": "開始",
+    "pause": "一時停止",
+    "reset": "リセット",
+    "skip": "スキップ"
+  },
+  "notifications": {
+    "enable": "🔔 他のアプリを使用中でも通知を受け取るには、通知を有効にしてください",
+    "enableButton": "通知を有効にする",
+    "workComplete": "✅ 作業時間が終了しました！",
+    "workCompleteMessage": "ポモドーロ{{count}}回目完了、{{breakTime}}分間の休憩をとりましょう",
+    "longBreakComplete": "🎉 4つのポモドーロを完了しました！",
+    "longBreakMessage": "{{longBreakTime}}分間の長い休憩を始めましょう、ゆっくり休んでください！",
+    "breakComplete": "🍅 休憩時間が終了しました、作業に戻りましょう！",
+    "breakCompleteMessage": "{{breakType}}時間が終了しました、新しい{{workTime}}分間の集中作業を始める準備をしましょう",
+    "shortBreak": "小休憩",
+    "longBreak": "長休憩",
+    "notificationsEnabled": "🔔 通知が有効になりました！",
+    "notificationsEnabledMessage": "ポモドーロタイマーが終了すると通知を受け取ります"
+  },
+  "stats": {
+    "completedPomodoros": "完了したポモドーロ"
+  },
+  "instructions": {
+    "title": "使用方法：",
+    "work": "🍅 25分間集中する",
+    "shortBreak": "☕ 5分間休憩する",
+    "cycle": "🔄 4回繰り返した後、15分間の長い休憩をとる",
+    "notifications": "🔔 最高の体験のために通知を有効にする"
+  },
+  "footer": {
+    "madeWith": "❤️ 製作者：",
+    "repository": "🔗 GitHubリポジトリ"
+  },
+  "language": {
+    "selector": "言語",
+    "en": "English",
+    "ja": "日本語",
+    "zh-TW": "繁體中文"
+  }
+}
