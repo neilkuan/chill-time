@@ -38,5 +38,5 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git switch gh-page
           git add .
-          git commit -m "Deploy to GitHub Pages"
-          git push origin gh-page
+          git commit -m "Deploy to GitHub Pages" || true
+          git push origin gh-page || true
