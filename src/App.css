@@ -1,9 +1,11 @@
 .app {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 2rem 1rem;
 }
 
 .container {
@@ -232,4 +234,70 @@
     width: 100%;
     max-width: 200px;
   }
-} 
+}
+
+/* 頁腳樣式 */
+.footer {
+  margin-top: 3rem;
+  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-content p {
+  margin: 0;
+  color: #34495e;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #34495e;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.github-link:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #2c3e50;
+}
+
+@media (max-width: 480px) {
+  .footer {
+    margin-top: 2rem;
+    padding: 1.5rem 1rem;
+  }
+  
+  .footer-content {
+    gap: 0.75rem;
+  }
+  
+  .footer-content p {
+    font-size: 0.9rem;
+  }
+  
+  .github-link {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
