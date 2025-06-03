@@ -44,7 +44,6 @@ Thumbs.db
 src/**/*
 package-lock.json
 package.json
-index.html
 README.md
 vite.config.js
 
