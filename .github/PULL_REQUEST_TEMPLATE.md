@@ -1,26 +1,26 @@
 # Pull Request
 
 ## Motivation
-<!-- 請說明為什麼需要這個 PR -->
+<!-- Please explain why this PR is needed -->
 
 ## Description
-<!-- 請描述這個 PR 做了哪些改動 -->
+<!-- Please describe what changes this PR makes -->
 
 ## PR Preview Link
-<!-- 請直接加這個格式的 stackblitz 連結 -->
+<!-- Please add a stackblitz link in this format -->
 
-`stackblitz.com/github/{帳號}/{專案}/tree/{分支名稱}`
+`stackblitz.com/github/{username}/{project}/tree/{branch-name}`
 
 ## Screenshots (if applicable)
-<!-- 如果有 UI 變更，請提供截圖 -->
+<!-- If there are UI changes, please provide screenshots -->
 
 ## Testing
-<!-- 請描述如何測試這個 PR -->
+<!-- Please describe how to test this PR -->
 
 ## Checklist
-<!-- 請在完成項目前加上 [x] -->
+<!-- Please add [x] to completed items -->
 
-- [ ] 我已經測試過這個 PR 的功能
-- [ ] 我已經更新相關文檔（如果需要）
-- [ ] 我已經添加必要的測試（如果需要）
-- [ ] 我已經確認這個 PR 不會破壞現有功能
+- [ ] I have tested the functionality of this PR
+- [ ] I have updated relevant documentation (if needed)
+- [ ] I have added necessary tests (if needed)
+- [ ] I have confirmed this PR won't break existing functionality
