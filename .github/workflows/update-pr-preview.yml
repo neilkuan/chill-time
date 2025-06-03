@@ -27,14 +27,18 @@ jobs:
                 prNumber
               );
               
-              await github.rest.pulls.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: prNumber,
-                body: updatedBody
-              });
-              
-              console.log(`Updated PR #${prNumber} preview link`);
+              try {
+                await github.rest.pulls.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: prNumber,
+                  body: updatedBody
+                });
+                
+                console.log(`Updated PR #${prNumber} preview link`);
+              } catch (error) {
+                console.error(`Failed to update PR #${prNumber} preview link: ${error.message}`);
+              }
             } else {
               console.log(`PR #${prNumber} description doesn't contain {PR_NUMBER} placeholder`);
             }
