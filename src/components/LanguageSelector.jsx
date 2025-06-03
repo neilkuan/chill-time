@@ -1,11 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import '../styles/LanguageSelector.css';
 
 const LanguageSelector = () => {
   const { t, i18n } = useTranslation();
   
-  const changeLanguage = (lng) => {
+  const changeLanguage = (event) => {
+    const lng = event.target.value;
     i18n.changeLanguage(lng);
     // Store the language preference in localStorage
     localStorage.setItem('i18nextLng', lng);
@@ -15,29 +15,16 @@ const LanguageSelector = () => {
 
   return (
     <div className="language-selector">
-      <div className="language-selector-container">
-        <span className="language-label">{t('language.selector')}:</span>
-        <div className="language-buttons">
-          <button
-            className={`language-btn ${i18n.language === 'en' ? 'active' : ''}`}
-            onClick={() => changeLanguage('en')}
-          >
-            {t('language.en')}
-          </button>
-          <button
-            className={`language-btn ${i18n.language === 'ja' ? 'active' : ''}`}
-            onClick={() => changeLanguage('ja')}
-          >
-            {t('language.ja')}
-          </button>
-          <button
-            className={`language-btn ${i18n.language === 'zh-TW' ? 'active' : ''}`}
-            onClick={() => changeLanguage('zh-TW')}
-          >
-            {t('language.zh-TW')}
-          </button>
-        </div>
-      </div>
+      <label htmlFor="language-select">{t('language.selector')}:</label>
+      <select 
+        id="language-select"
+        value={i18n.language} 
+        onChange={changeLanguage}
+      >
+        <option value="en">{t('language.en')}</option>
+        <option value="ja">{t('language.ja')}</option>
+        <option value="zh-TW">{t('language.zh-TW')}</option>
+      </select>
     </div>
   );
 };
