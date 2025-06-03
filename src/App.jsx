@@ -253,8 +253,22 @@ function App() {
           </ul>
         </div>
       </div>
+      
+      <footer className="footer">
+        <div className="footer-content">
+          <p>Made with ❤️ by <strong>Neil Kuan</strong></p>
+          <a 
+            href="https://github.com/neilkuan/chill-time" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="github-link"
+          >
+            <span>🔗 GitHub Repository</span>
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
 
-export default App; 
+export default App;
