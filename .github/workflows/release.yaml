@@ -32,11 +32,11 @@ jobs:
       - name: Build project
         run: npm run build
       
-      - name: Deploy to GitHub Pages branch
+      - name: Deploy to GitHub Page branch
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git switch gh-pages
+          git switch gh-page
           git add .
           git commit -m "Deploy to GitHub Pages"
-          git push origin gh-pages
+          git push origin gh-page
