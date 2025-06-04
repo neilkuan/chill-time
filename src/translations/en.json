@@ -1,0 +1,60 @@
+{
+  "appTitle": "🍅 Pomodoro Timer",
+  "notification": {
+    "enable": "🔔 Enable notifications to get reminders even when using other applications",
+    "enableButton": "Enable Notifications",
+    "enabled": "🔔 Notifications Enabled!",
+    "enabledMessage": "You will receive notifications when your Pomodoro timer ends"
+  },
+  "modes": {
+    "work": "Focus Work",
+    "break": "Short Break",
+    "longBreak": "Long Break"
+  },
+  "controls": {
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Reset",
+    "skip": "Skip"
+  },
+  "stats": {
+    "completed": "Completed Pomodoros"
+  },
+  "instructions": {
+    "title": "How to Use:",
+    "items": [
+      "🍅 Focus for 25 minutes",
+      "☕ Take a 5-minute break",
+      "🔄 After 4 cycles, take a 15-minute long break",
+      "🔔 Enable notifications for the best experience"
+    ]
+  },
+  "footer": {
+    "madeWith": "Made with ❤️ by",
+    "repository": "🔗 GitHub Repository"
+  },
+  "notifications": {
+    "workComplete": {
+      "title": "✅ Work time is over!",
+      "message": "Completed Pomodoro #{count}, now take a {minutes}-minute break"
+    },
+    "longBreakStart": {
+      "title": "🎉 Congratulations on completing 4 Pomodoros!",
+      "message": "Now take a {minutes}-minute long break to relax!"
+    },
+    "breakComplete": {
+      "title": "🍅 Break is over, time to work!",
+      "message": "{type} time is over, get ready for a new {minutes}-minute focused work session"
+    }
+  },
+  "breakTypes": {
+    "short": "Short break",
+    "long": "Long break"
+  },
+  "language": {
+    "selector": "Language",
+    "en": "English",
+    "ja": "日本語",
+    "zh-TW": "繁體中文"
+  }
+}
