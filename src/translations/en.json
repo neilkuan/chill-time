@@ -56,5 +56,9 @@
     "en": "English",
     "ja": "日本語",
     "zh-TW": "繁體中文"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode"
   }
 }
