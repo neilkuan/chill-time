@@ -37,6 +37,8 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git switch gh-pages
+          rm -rf docs/*.css
+          rm -rf docs/*.js
           cp dist/* docs/
           git add .
           git commit -m "Deploy to GitHub Pages" || true
