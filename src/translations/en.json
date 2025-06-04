@@ -58,9 +58,7 @@
     "zh-TW": "繁體中文"
   },
   "theme": {
-    "toggle": "Toggle theme",
-    "light": "Light mode",
-    "dark": "Dark mode",
-    "system": "System preference"
+    "light": "Light Mode",
+    "dark": "Dark Mode"
   }
 }

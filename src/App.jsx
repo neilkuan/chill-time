@@ -174,11 +174,11 @@ function App() {
       <div className="container">
         <h1 className="title">{t('appTitle')}</h1>
         
-        {/* App Controls: Language Selector and Theme Toggle */}
-        <div className="app-controls">
-          <LanguageSelector />
-          <ThemeToggle />
-        </div>
+        {/* Theme Toggle */}
+        <ThemeToggle />
+        
+        {/* Language Selector */}
+        <LanguageSelector />
         
         {/* Notification permission status */}
         {notificationPermission !== 'granted' && (
