@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import './App.css'
 import LanguageSelector from './components/LanguageSelector'
+import ThemeToggle from './components/ThemeToggle'
 
 const WORK_TIME = 25; // Work time 25 minutes
 const BREAK_TIME = 5;  // Break time 5 minutes
@@ -173,8 +174,11 @@ function App() {
       <div className="container">
         <h1 className="title">{t('appTitle')}</h1>
         
-        {/* Language Selector */}
-        <LanguageSelector />
+        {/* App Controls: Language Selector and Theme Toggle */}
+        <div className="app-controls">
+          <LanguageSelector />
+          <ThemeToggle />
+        </div>
         
         {/* Notification permission status */}
         {notificationPermission !== 'granted' && (

@@ -4,14 +4,91 @@
   box-sizing: border-box;
 }
 
+:root {
+  /* Light theme variables */
+  --bg-gradient-start: #f5f7fa;
+  --bg-gradient-end: #c3cfe2;
+  --text-color: #2c3e50;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(255, 255, 255, 0.9);
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --stat-bg: rgba(255, 255, 255, 0.6);
+  --stat-border: rgba(255, 255, 255, 0.8);
+  --stat-number-color: #e67e22;
+  --stat-label-color: #34495e;
+  --instruction-bg: rgba(255, 255, 255, 0.6);
+  --instruction-border: rgba(255, 255, 255, 0.8);
+  --instruction-title-color: #e67e22;
+  --instruction-item-bg: rgba(255, 255, 255, 0.4);
+  --instruction-item-border: rgba(255, 255, 255, 0.6);
+  --instruction-item-color: #34495e;
+  --footer-bg: rgba(255, 255, 255, 0.1);
+  --footer-border: rgba(255, 255, 255, 0.2);
+  --footer-text: #34495e;
+  --github-link-bg: rgba(255, 255, 255, 0.3);
+  --github-link-border: rgba(255, 255, 255, 0.4);
+  --github-link-color: #34495e;
+  --github-link-hover-bg: rgba(255, 255, 255, 0.5);
+  --github-link-hover-color: #2c3e50;
+  --language-selector-color: #34495e;
+  --language-selector-bg: rgba(255, 255, 255, 0.8);
+  --language-selector-border: rgba(52, 73, 94, 0.2);
+  --progress-bar-bg: rgba(52, 73, 94, 0.1);
+  --title-color: #34495e;
+  --theme-toggle-bg: rgba(255, 255, 255, 0.8);
+  --theme-toggle-border: rgba(52, 73, 94, 0.2);
+  --theme-toggle-color: #34495e;
+  --theme-toggle-hover-bg: rgba(255, 255, 255, 0.9);
+  --theme-toggle-hover-border: rgba(52, 73, 94, 0.4);
+}
+
+html[data-theme="dark"] {
+  /* Dark theme variables */
+  --bg-gradient-start: #1a202c;
+  --bg-gradient-end: #2d3748;
+  --text-color: #e2e8f0;
+  --card-bg: rgba(26, 32, 44, 0.8);
+  --card-border: rgba(45, 55, 72, 0.9);
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --stat-bg: rgba(26, 32, 44, 0.6);
+  --stat-border: rgba(45, 55, 72, 0.8);
+  --stat-number-color: #f39c12;
+  --stat-label-color: #a0aec0;
+  --instruction-bg: rgba(26, 32, 44, 0.6);
+  --instruction-border: rgba(45, 55, 72, 0.8);
+  --instruction-title-color: #f39c12;
+  --instruction-item-bg: rgba(45, 55, 72, 0.4);
+  --instruction-item-border: rgba(45, 55, 72, 0.6);
+  --instruction-item-color: #a0aec0;
+  --footer-bg: rgba(26, 32, 44, 0.3);
+  --footer-border: rgba(45, 55, 72, 0.4);
+  --footer-text: #a0aec0;
+  --github-link-bg: rgba(45, 55, 72, 0.3);
+  --github-link-border: rgba(45, 55, 72, 0.4);
+  --github-link-color: #a0aec0;
+  --github-link-hover-bg: rgba(45, 55, 72, 0.5);
+  --github-link-hover-color: #e2e8f0;
+  --language-selector-color: #e2e8f0;
+  --language-selector-bg: rgba(45, 55, 72, 0.8);
+  --language-selector-border: rgba(160, 174, 192, 0.2);
+  --progress-bar-bg: rgba(160, 174, 192, 0.1);
+  --title-color: #e2e8f0;
+  --theme-toggle-bg: rgba(45, 55, 72, 0.8);
+  --theme-toggle-border: rgba(160, 174, 192, 0.2);
+  --theme-toggle-color: #e2e8f0;
+  --theme-toggle-hover-bg: rgba(45, 55, 72, 0.9);
+  --theme-toggle-hover-border: rgba(160, 174, 192, 0.4);
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2c3e50;
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 #root {
